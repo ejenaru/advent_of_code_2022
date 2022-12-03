@@ -6,10 +6,10 @@ INPUT = "input"
 EXAMPLE = "example"
 TXT = ".txt"
 
-def get_file():
+def get_input():
 	file_path = RES_PATH + INPUT + sys.argv[0][-5:-3] + TXT
 	return open(file_path, "r")
 
-def get_example(num):
-	file_path = RES_PATH + EXAMPLE + num + TXT
+def get_example():
+	file_path = RES_PATH + EXAMPLE + sys.argv[0][-5:-3] + TXT
 	return open(file_path, "r")
