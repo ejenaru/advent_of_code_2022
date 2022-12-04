@@ -31,9 +31,16 @@ def check_range(range1, range2):
 
 def part2():
   sum = 0
+  for pair in input_list:
+    range1 = range(int(pair.split(',')[0].split('-')[0]),int(pair.split(',')[0].split('-')[1]))
+    range2 = range(int(pair.split(',')[1].split('-')[0]),int(pair.split(',')[1].split('-')[1]))
+    sum += 1 if check_range(range1, range2) or check_partial_range(range1, range2) else 0
   print('Part 2 ==> {}'.format(sum))
 
-
+def check_partial_range(range1,range2):
+  check1 = range1.start <= range2.start and range1.stop >= range2.start
+  check2 = range2.start <= range1.start and range2.stop >= range1.start
+  return check1 or check2
 
 def main():
   
