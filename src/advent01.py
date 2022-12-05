@@ -1,25 +1,38 @@
+import sys
 import utils
 
 
-file = utils.get_file()
-input_list = list(map(int, file.readlines()))
- 
+example = sys.argv[1:]
+
+if example:
+  file = utils.get_example()
+else:
+	file = utils.get_input()
+
+
+input_list = list(file.read().split("\n\n"))
+
 def part1():
-	increased = 0
-	for i in range(0, len(input_list)):
-		if input_list[i] > input_list[i-1]:
-			increased+=1
-	print('Part 1 ==> Increased: {}'.format(increased))
+  max = 0
+  for elf in input_list:
+    count = 0
+    for amount in elf.split("\n"):
+      count += int(amount)
+    max = count if max < count else max
+  print('Part 1 ==> Max elf: {}'.format(max))
 
 def part2():
-	previous = input_list[0] + input_list[1] + input_list[2]
-	increased = 0
-	for i in range(3,len(input_list)):
-		data = input_list[i] + input_list[i-1] + input_list[i-2]
-		if data > previous:
-			increased +=1
-		previous = data
-	print('Part 2 ==> Increased: {}'.format(increased))
+  list_elfs = []
+  for elf in input_list:
+    count = 0
+    for amount in elf.split("\n"):
+      count += int(amount)
+    list_elfs.append(count)
+  max = 0
+  list_elfs.sort()
+  for i in range(3):
+    max +=list_elfs.pop()
+  print('Part 2 ==> Increased: {}'.format(max))
 
 
 

@@ -10,23 +10,13 @@ else:
 
 input_list = list(file.read().splitlines())
 
-
-
-
-
-
-
-
-
 def get_empty_cargo_list():
   cargo_list = []
   for i in range(0, len(input_list[0]), 4):
     cargo_list.append([]) 
   return cargo_list
 
-
 instructions = []
-
 
     
 def print_cargo(cargo_list):
